@@ -64,6 +64,7 @@
       border: 2px solid #d8b36c;
       z-index: 2;
       position: relative;
+      cursor: pointer;
     }
 
     .button:hover {
@@ -82,16 +83,38 @@
   </style>
 </head>
 <body>
-  <!-- Background image behind title -->
-  <img src="puringithub.png" alt="Purin Hub Logo" class="title-bg">
 
+  <img src="puringithub.png" alt="Purin Hub Logo" class="title-bg">
   <h1>Purin Hub</h1>
 
-  <a href="https://purinpup.github.io/homework-help-V2/" class="button" target="_blank" rel="noopener noreferrer">Drive Mad</a>
-  <a href="https://purinpup.github.io/homework-help/" class="button" target="_blank" rel="noopener noreferrer">Cookie Clicker</a>
-  <a href="https://purinpup.github.io/Profile/" class="button" target="_blank" rel="noopener noreferrer">Helios Proxy</a>
-  <a href="https://purinpup.github.io/Stickman-Hook/" class="button" target="_blank" rel="noopener noreferrer">Stickman Hook</a>
+  <!-- Buttons use JS instead of <a> to open about:blank -->
+  <div class="button" onclick="openBlank('https://purinpup.github.io/homework-help-V2/')">Drive Mad</div>
+  <div class="button" onclick="openBlank('https://purinpup.github.io/homework-help/')">Cookie Clicker</div>
+  <div class="button" onclick="openBlank('https://purinpup.github.io/the-possible/')">NautilusOS</div>
+  <div class="button" onclick="openBlank('https://purinpup.github.io/Stickman-Hook/')">Stickman Hook</div>
 
   <footer>© 2025 Purin Hub</footer>
+
+  <!-- Cloaked tab JavaScript -->
+  <script>
+    function openBlank(url) {
+      const win = window.open("about:blank", "_blank");
+      win.document.write(`
+        <html>
+          <head>
+            <title>Loading...</title>
+            <style>
+              body, html { margin: 0; height: 100%; overflow: hidden; }
+              iframe { width: 100%; height: 100%; border: none; }
+            </style>
+          </head>
+          <body>
+            <iframe src="${url}"></iframe>
+          </body>
+        </html>
+      `);
+    }
+  </script>
+
 </body>
 </html>
